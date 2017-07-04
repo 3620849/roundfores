@@ -13,10 +13,11 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 public class App {
     public static void main(String[] args) {
         ApplicationContext context = new FileSystemXmlApplicationContext("src\\main\\java\\spring-config.xml");
-        SQLiteDAO rws = (SQLiteDAO)context.getBean("SQLiteDAO");
+        ReviewService rws = (ReviewService)context.getBean("ReviewService");
 
 
-        System.out.println(rws.getSizeOfTabel());
+        System.out.println(rws.getListMostActive());
+        System.out.println(rws.getMostComentedFoodItems());
 
 
     }

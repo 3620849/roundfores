@@ -25,7 +25,7 @@ public class ReviewService {
         return sqLiteDAO.getMostComentedFoodItems();
     }
 
-    public List<String>getMostUsedWordsInRewiev(){
+    /*public List<String>getMostUsedWordsInRewiev(){
 
         CustomDictionary cd = new CustomDictionary();
         int size = sqLiteDAO.getSizeOfTabel();
@@ -38,7 +38,7 @@ public class ReviewService {
             }
         }
         return cd.getMostUsedWords();
-    };
+    };*/
 
     public Reviews translateRewiev(String input, String output,String text){
         return null;
