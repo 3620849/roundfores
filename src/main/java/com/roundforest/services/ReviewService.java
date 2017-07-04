@@ -25,20 +25,23 @@ public class ReviewService {
         return sqLiteDAO.getMostComentedFoodItems();
     }
 
-    /*public List<String>getMostUsedWordsInRewiev(){
+    public List<String>getMostUsedWordsInRewiev(){
 
-        CustomDictionary cd = new CustomDictionary();
+        Dictionary dictionary = new Dictionary();
         int size = sqLiteDAO.getSizeOfTabel();
-        int currentRew = 1;
-        while(currentRew!=size){
-           String text =  sqLiteDAO.getTextById(currentRew).get(0);
+        int currentRow = 1;
+        while(currentRow<10){
+           String text =  sqLiteDAO.getTextById(currentRow).get(0);
             String [] arr = text.replaceAll("[^a-zA-Z ]", "").split(" ");
             for(String s: arr){
-                cd.addWord(s);
+                dictionary.addWord(s);
             }
+            ++currentRow;
+
         }
-        return cd.getMostUsedWords();
-    };*/
+        dictionary.printTop();
+        return null;//dictionary.getMostUsedWords();
+    };
 
     public Reviews translateRewiev(String input, String output,String text){
         return null;

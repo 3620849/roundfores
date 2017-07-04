@@ -16,8 +16,10 @@ public class App {
         ReviewService rws = (ReviewService)context.getBean("ReviewService");
 
 
+
         System.out.println(rws.getListMostActive());
         System.out.println(rws.getMostComentedFoodItems());
+        //rws.getMostUsedWordsInRewiev();
 
 
     }
