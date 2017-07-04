@@ -30,17 +30,16 @@ public class ReviewService {
         Dictionary dictionary = new Dictionary();
         int size = sqLiteDAO.getSizeOfTabel();
         int currentRow = 1;
-        while(currentRow<10){
+        while(currentRow<size){
            String text =  sqLiteDAO.getTextById(currentRow).get(0);
-            String [] arr = text.replaceAll("[^a-zA-Z ]", "").split(" ");
+            String [] arr = text.replaceAll("[^a-zA-Z ]", "").replaceAll(" +"," ").split(" ");
             for(String s: arr){
                 dictionary.addWord(s);
             }
             ++currentRow;
 
         }
-        dictionary.printTop();
-        return null;//dictionary.getMostUsedWords();
+        return dictionary.getMostCommonWord();
     };
 
     public Reviews translateRewiev(String input, String output,String text){

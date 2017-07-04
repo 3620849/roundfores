@@ -18,8 +18,10 @@ public class App {
 
 
         System.out.println(rws.getListMostActive());
+
         System.out.println(rws.getMostComentedFoodItems());
-        //rws.getMostUsedWordsInRewiev();
+
+        System.out.println(rws.getMostUsedWordsInRewiev());
 
 
     }

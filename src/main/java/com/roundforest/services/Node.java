@@ -86,6 +86,7 @@ public class Node implements Comparable<Node>{
         return ++wordCounter;
     }
 
+
     public int compareTo(Node o) {
         return this.getWordCounter()-o.getWordCounter();
     }
