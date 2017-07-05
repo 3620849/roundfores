@@ -11,9 +11,7 @@ public class Food {
 
     @Override
     public String toString() {
-        return "Food{" +
-                "productId='" + productId + '\'' +
-                '}';
+        return productId;
     }
 
     public String getProductId() {
