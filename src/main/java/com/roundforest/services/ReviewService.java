@@ -18,9 +18,12 @@ public class ReviewService {
     @Autowired
     SQLiteDAO sqLiteDAO;
 
+    int size = sqLiteDAO.getSizeOfTabel();//Length of DB
+
     public List<User> getListMostActive(){
         return sqLiteDAO.getListMostActive();
     }
+
     public List<Food>getMostComentedFoodItems(){
         return sqLiteDAO.getMostComentedFoodItems();
     }
@@ -28,7 +31,7 @@ public class ReviewService {
     public List<String>getMostUsedWordsInRewiev(){
 
         Dictionary dictionary = new Dictionary();
-        int size = sqLiteDAO.getSizeOfTabel();
+
         int currentRow = 1;
         while(currentRow<size){
            String text =  sqLiteDAO.getTextById(currentRow).get(0);

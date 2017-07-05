@@ -6,9 +6,8 @@ import java.util.*;
  */
 public class Dictionary {
     private Node root = new Node(null);
-    private TreeSet<Node> nodeSet = new TreeSet<Node>();
-     private ArrayList <String> resultArray = new ArrayList<String>();
-    private static final int RES_ARRAY_CAPACITY = 1000;
+    private ArrayList<Node> nodeSet = new ArrayList<Node>();
+    private ArrayList <String> resultArray = new ArrayList<String>();
 
 
     public void addWord(String word) {
@@ -18,24 +17,28 @@ public class Dictionary {
             current.addNextChar(ch);
             current = current.getNextWithChar(ch);
         }
-        int count = current.increaseWordCount();
+        current.increaseWordCount();
         current.addNextChar('\0');
 
-         if(nodeSet.size()>1000){
-             nodeSet.remove(nodeSet.first());
+         if(!nodeSet.contains(current)){
             nodeSet.add(current);
-         }else {
-             nodeSet.add(current);
          }
     }
 
     public List getMostCommonWord() {
-        for(Node n : nodeSet){
-        resultArray.add(printWordByLastNode(n));}
+        nodeSet.sort(new Comparator<Node>() {
+            public int compare(Node o1, Node o2) {
+                return o2.getWordCounter()-o1.getWordCounter();
+            }
+        });
+
+        for(int i=0;i<1000;++i){
+        resultArray.add(printWordByLastNode(nodeSet.get(i)));}
         return resultArray;
     }
 
     public String printWordByLastNode(Node n) {
+        int c = n.getWordCounter();
         StringBuilder builder = new StringBuilder();
         while (n.getValue() != null) {
             builder.append(n.getValue());

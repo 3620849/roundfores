@@ -15,8 +15,6 @@ public class App {
         ApplicationContext context = new FileSystemXmlApplicationContext("src\\main\\java\\spring-config.xml");
         ReviewService rws = (ReviewService)context.getBean("ReviewService");
 
-
-
         System.out.println(rws.getListMostActive());
 
         System.out.println(rws.getMostComentedFoodItems());
