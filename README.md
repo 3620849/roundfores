@@ -1,3 +1,3 @@
 # roundfores
-Before running please set url to database in spring-config.xml
+Before running please set url of database in spring-config.xml
 
