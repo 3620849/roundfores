@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -27,7 +28,7 @@ public class TranslateService {
     public TranslateService( ) {
     }
 
-    public  List<Reviews> translateAllRewiews(String from,String to){
+    public  List<Reviews> translateAllRewiews(String from,String to) throws IOException {
         List<Reviews> reviewsList= sqLiteDAO.getAllReviews();
         for(Reviews r : reviewsList){
             String translate = translateString(from,to, r.getText());
@@ -35,7 +36,7 @@ public class TranslateService {
         }
         return reviewsList;
     }
-    private String translateString(String from,String to,String text){
+    private String translateString(String from,String to,String text) throws IOException {
         String json = parseToJson(from, to,text);
         System.out.println(json);
         HttpHeaders headers = new HttpHeaders();
@@ -43,6 +44,9 @@ public class TranslateService {
         HttpEntity<String> entity = new HttpEntity<String>(json,headers);
         ResponseEntity<String> response = restTemplate.postForEntity(url, entity,String.class);
         System.out.println(response.getStatusCode());
+        if(!response.getStatusCode().equals(200)){
+            throw new IOException("server return status code:"+response.getStatusCode().toString()+"when try translate text");
+        }
         return response.toString();
     }
     private String parseToJson(String from,String to,String text){

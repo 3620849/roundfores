@@ -8,6 +8,8 @@ import org.springframework.context.ApplicationContext;
 
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
+import java.io.IOException;
+
 /**
  * Before running please set url to database in spring-config.xml
  */
@@ -24,7 +26,11 @@ public class App {
         System.out.println(rws.getMostUsedWordsInRewiev());
         System.out.println();
         if(args.length>0 && args[0].equals("true")) {
-            System.out.println(trs.translateAllRewiews("en", "fr"));
+            try {
+                System.out.println(trs.translateAllRewiews("en", "fr"));
+            } catch (IOException e) {
+                e.getMessage();
+            }
         };
 
     }
