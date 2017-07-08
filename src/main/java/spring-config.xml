@@ -11,6 +11,7 @@
 
     <context:component-scan base-package="com.roundforest" />
     <context:annotation-config />
+    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate"></bean>
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.sqlite.JDBC" />

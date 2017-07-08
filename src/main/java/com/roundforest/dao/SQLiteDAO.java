@@ -2,8 +2,10 @@ package com.roundforest.dao;
 
 import com.roundforest.dao.interfaces.ReviewsDAO;
 import com.roundforest.dao.mappers.FoodMapper;
+import com.roundforest.dao.mappers.ReviewsRowMapper;
 import com.roundforest.dao.mappers.UserMapper;
 import com.roundforest.model.Food;
+import com.roundforest.model.Reviews;
 import com.roundforest.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -39,6 +41,11 @@ public class SQLiteDAO implements ReviewsDAO{
     public List<String> getTextById(int id){
         String sql = "select LOWER(Text) as Text FROM Reviews WHERE Id = "+id;
         return jdbcTemplate.queryForList(sql, String.class);
+    }
+
+    public List<Reviews> getAllReviews() {
+        String sql = "select * from Reviews";
+        return jdbcTemplate.query(sql, new ReviewsRowMapper());
     }
 
     public int getSizeOfTabel(){

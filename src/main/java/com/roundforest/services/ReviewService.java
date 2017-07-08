@@ -18,8 +18,6 @@ public class ReviewService /*implements Runnable*/{
     @Autowired
     SQLiteDAO sqLiteDAO;
 
-
-
     public List<User> getListMostActive(){
         return sqLiteDAO.getListMostActive();
     }

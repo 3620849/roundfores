@@ -13,4 +13,5 @@ public interface ReviewsDAO {
     List<User> getListMostActive();
     List<Food> getMostComentedFoodItems();
     List<String> getTextById(int id);
+    List<Reviews> getAllReviews();
 }
