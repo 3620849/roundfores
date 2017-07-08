@@ -14,7 +14,7 @@ import java.util.List;
  */
 
 @Service("ReviewService")
-public class ReviewService {
+public class ReviewService /*implements Runnable*/{
     @Autowired
     SQLiteDAO sqLiteDAO;
 
@@ -49,4 +49,7 @@ public class ReviewService {
         return null;
     }
 
+   /* public void run() {
+
+    }*/
 }

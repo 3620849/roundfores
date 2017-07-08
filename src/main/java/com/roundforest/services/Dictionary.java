@@ -4,7 +4,7 @@ import java.util.*;
 /**
  * Created by UA C on 04.07.2017.
  */
-public class Dictionary {
+public class Dictionary{
     private Node root = new Node(null);
     private ArrayList<Node> nodeSet = new ArrayList<Node>();
     private ArrayList <String> resultArray = new ArrayList<String>();
@@ -46,5 +46,6 @@ public class Dictionary {
         }
         return builder.reverse().toString();
     }
+
 
 }
